@@ -1,18 +1,19 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
+import { View } from 'react-native';
 
 import { HapticTab } from '@/components/haptic-tab';
 import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: '#FF6B35',
+        tabBarInactiveTintColor: '#6B6B6B',
+        tabBarStyle: {
+          backgroundColor: '#1A1A1A',
+        },
         headerShown: false,
         tabBarButton: HapticTab,
       }}>
@@ -20,14 +21,48 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color, focused }) => (
+            <View style={{ alignItems: 'center' }}>
+              {focused && <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#FF6B35', marginBottom: 2 }} />}
+              <IconSymbol size={28} name="house.fill" color={color} />
+            </View>
+          ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="group"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Group',
+          tabBarIcon: ({ color, focused }) => (
+            <View style={{ alignItems: 'center' }}>
+              {focused && <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#FF6B35', marginBottom: 2 }} />}
+              <IconSymbol size={28} name="person.2.fill" color={color} />
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="stats"
+        options={{
+          title: 'Stats',
+          tabBarIcon: ({ color, focused }) => (
+            <View style={{ alignItems: 'center' }}>
+              {focused && <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#FF6B35', marginBottom: 2 }} />}
+              <IconSymbol size={28} name="chart.bar.fill" color={color} />
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="settings"
+        options={{
+          title: 'Settings',
+          tabBarIcon: ({ color, focused }) => (
+            <View style={{ alignItems: 'center' }}>
+              {focused && <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#FF6B35', marginBottom: 2 }} />}
+              <IconSymbol size={28} name="gearshape.fill" color={color} />
+            </View>
+          ),
         }}
       />
     </Tabs>
