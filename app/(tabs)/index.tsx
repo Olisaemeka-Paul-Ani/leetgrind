@@ -1,6 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
-
-
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 export default function HomeScreen() {
   const weekData = [
     { day: 'M', isComplete: true },
@@ -36,6 +34,10 @@ export default function HomeScreen() {
             />
           ))}
       </View>
+
+      <TouchableOpacity style={styles.completeButton}>
+        <Text style={styles.buttonText}>MARK TODAY COMPLETE</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 }
@@ -98,13 +100,13 @@ const styles = StyleSheet.create({
   },
 
   dotIncomplete: {
-    backgroundColor: '#FF6B35',
-    borderColor: '#FF6B35',
+    backgroundColor: 'transparent',
+    borderColor: '#6B6B6B',
   },
 
   dotComplete: {
-  backgroundColor: 'transparent',
-  borderColor: '#6B6B6B',
+    backgroundColor: '#FF6B35',
+    borderColor: '#FF6B35',
   },
 
   calendarDot: {
@@ -112,9 +114,24 @@ const styles = StyleSheet.create({
     height: 32,
     borderRadius: 16,
     borderWidth: 2,
+  },
+
+  completeButton: {
+    backgroundColor: '#FF6B35',
+    borderRadius: 12,
+    paddingVertical: 16,
+    paddingHorizontal: 24,
+    marginTop:20,
+    alignItems: 'center', 
+
+  },
+
+  buttonText:{
+    color: "#FFFFFF",
+    fontSize: 14,
+    fontWeight: "600",
+    textAlign: 'center',
   }
-
-
 
 
 });
