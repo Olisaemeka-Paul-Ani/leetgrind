@@ -25,13 +25,15 @@ export default function HomeScreen() {
 
        <View style={styles.calendarRow}>
           {weekData.map((item, index) => (
-            <View 
-              key={index}
+            <View  key={index} style = {{alignItems: 'center'}}>
+              <Text style = {styles.dayLabel}>{item.day}</Text>
+              <View
               style={[
                 styles.calendarDot,
                 item.isComplete ? styles.dotComplete : styles.dotIncomplete
               ]}
-            />
+              />
+            </View>
           ))}
       </View>
 
@@ -97,6 +99,12 @@ const styles = StyleSheet.create({
   calendarRow: {
     flexDirection: 'row',
     gap: 10, 
+  },
+
+  dayLabel : {
+    color: '#6B6B6B',
+    alignItems: 'center', 
+    marginBottom: 5,
   },
 
   dotIncomplete: {
