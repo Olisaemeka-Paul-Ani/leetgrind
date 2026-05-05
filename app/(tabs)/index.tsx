@@ -14,8 +14,16 @@ export default function HomeScreen() {
       style={styles.container}
       contentContainerStyle={styles.content}
     >
-      <Text style ={styles.greeting}>Good Evening,</Text>
-      <Text style ={styles.name}>Olisaemeka</Text>
+      <View style = {styles.topBar}>
+        <View>
+        <Text style={styles.greeting}>Good Evening,</Text>
+        <Text style={styles.name}>Olisaemeka</Text>
+        </View>
+        <View style = {styles.profilepic}>
+          <Text style={{color: "#FFFFFF"}}>OE</Text>
+        </View>
+      </View>
+      
 
       <View style={styles.streakCard}>
         <Text style={styles.flameIcon}>🔥</Text>
@@ -153,7 +161,22 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "600",
     textAlign: 'center',
-  }
+  },
+
+  topBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+
+  profilepic: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    borderWidth: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#333333',
+  },
 
 
 });
