@@ -1,4 +1,7 @@
+import { Ionicons } from '@expo/vector-icons';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
+
 export default function HomeScreen() {
   const weekData = [
     { day: 'M', isComplete: true },
@@ -9,6 +12,9 @@ export default function HomeScreen() {
     { day: 'S', isComplete: false },
     { day: 'S', isComplete: false },
   ];
+
+  const dailyProblem = 
+    {question: 'Two Sum', difficulty:'Easy', tags: ["Array", "HashMap"]}
   return (
     <ScrollView 
       style={styles.container}
@@ -50,6 +56,17 @@ export default function HomeScreen() {
       <TouchableOpacity style={styles.completeButton}>
         <Text style={styles.buttonText}>MARK TODAY COMPLETE</Text>
       </TouchableOpacity>
+
+
+      <View style = {styles.questionCard}>
+        <View style = {{flexDirection: 'row',justifyContent: 'space-between',}}>
+          <Text>Hello</Text>
+          <Ionicons name="bookmark-outline" size={20} color="#6B6B6B"  />
+        </View>
+      </View>
+
+
+      
     </ScrollView>
   );
 }
@@ -152,7 +169,8 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     paddingHorizontal: 24,
     marginTop:20,
-    alignItems: 'center', 
+    alignItems: 'center',
+    marginBottom: 40, 
 
   },
 
@@ -176,6 +194,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#333333',
+  },
+
+  questionCard: {
+    backgroundColor: '#1C1C1C',
+    height: 140,
+    borderRadius: 10,
+    borderColor: '#333333',
+    borderWidth: 1,
+    padding: 16,
+
   },
 
 
