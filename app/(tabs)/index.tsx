@@ -32,7 +32,9 @@ export default function HomeScreen() {
                 styles.calendarDot,
                 item.isComplete ? styles.dotComplete : styles.dotIncomplete
               ]}
-              />
+              >
+                {item.isComplete && <Text style={styles.checkmark}>✓</Text>}
+              </View>
             </View>
           ))}
       </View>
@@ -63,11 +65,12 @@ const styles = StyleSheet.create({
   name: {
     color: "#FFFFFF",
     fontSize: 24,
-    marginBottom: 40,
+    marginBottom: 10,
+    lineHeight:24,
   }, 
 
   streakCard: {
-    marginTop: 16,
+    marginTop: 0,
     alignItems: 'center',
     padding: 24,
     marginBottom: 16,
@@ -83,7 +86,7 @@ const styles = StyleSheet.create({
 
   streakNumber: {
     color: "#FF6B35",
-    fontSize: 140,
+    fontSize: 135,
     marginTop: 5,
     lineHeight: 140,
   },
@@ -92,13 +95,15 @@ const styles = StyleSheet.create({
   color: "#9E9E9E",
   fontSize: 14,
   lineHeight: 14,
-  marginTop: -10,  // Negative margin pulls it closer to the number above
+  marginTop: -20,  // Negative margin pulls it closer to the number above
   marginBottom: 4,
 },
 
   calendarRow: {
     flexDirection: 'row',
     gap: 10, 
+    marginTop: 20,
+    marginBottom: 20,
   },
 
   dayLabel : {
@@ -115,6 +120,11 @@ const styles = StyleSheet.create({
   dotComplete: {
     backgroundColor: '#FF6B35',
     borderColor: '#FF6B35',
+    
+  },
+
+  checkmark: {
+    color: "#FFFFFF",
   },
 
   calendarDot: {
@@ -122,6 +132,10 @@ const styles = StyleSheet.create({
     height: 32,
     borderRadius: 16,
     borderWidth: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  
+
   },
 
   completeButton: {
