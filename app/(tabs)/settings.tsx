@@ -1,22 +1,29 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text } from 'react-native';
 
-export default function HomeScreen() {
+
+export default function SettingsScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Settings Screen</Text>
-    </View>
+    <ScrollView style = {styles.container}contentContainerStyle={styles.content}>
+      <Text style = {styles.settingsText}>Settings</Text>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#0A0A0A',
   },
-  text: {
-    fontSize: 20,
-    fontWeight: '600',
+
+  content: {
+    padding: 16,
+    paddingTop:50,
   },
+
+  settingsText: {
+    color: "#FFFFFF",
+    fontSize: 24,
+    lineHeight: 24,
+  }
+  
 });
