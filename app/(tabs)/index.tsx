@@ -59,9 +59,23 @@ export default function HomeScreen() {
 
 
       <View style = {styles.questionCard}>
-        <View style = {{flexDirection: 'row',justifyContent: 'space-between',}}>
-          <Text>Hello</Text>
-          <Ionicons name="bookmark-outline" size={20} color="#6B6B6B"  />
+        <View style = {{flexDirection: 'row',justifyContent: 'space-between', flex: 1}}>
+          <View>
+            <View style = {{flexDirection: 'row', alignItems: 'center',  gap: 5,}}>
+              <View style = {styles.Easydifficulty}>
+                <Text style = {{color: '#22C55E', fontSize: 12,}}>{dailyProblem.difficulty}</Text>
+              </View>
+              <Text style = {{color: "#9E9E9E",}}> Daily Challenge</Text>
+            </View>
+            <View>
+            <Text style = {styles.questionName}>{dailyProblem.question}</Text>
+            <Text style = {{color: "#9E9E9E",}}>{dailyProblem.tags.join(' · ')}</Text>
+            </View>
+          </View>
+          <View  style = {{justifyContent: 'space-between', alignItems: 'flex-end',flexDirection: 'column',}}>
+            <Ionicons name="bookmark-outline" size={20} color="#6B6B6B"  />
+            <Text style = {{justifyContent: 'flex-end', alignItems: 'flex-end', color: "#FF6B35"}}>Solve now →</Text>
+          </View>
         </View>
       </View>
 
@@ -205,6 +219,21 @@ const styles = StyleSheet.create({
     padding: 16,
 
   },
+
+  questionName: {
+    color: "#FFFFFF",
+    fontSize: 25,
+  },
+
+  Easydifficulty: {
+    backgroundColor: "#14532D",
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 22,
+    width: 45,
+    borderRadius: 10,
+    marginBottom: 5,
+  }
 
 
 });
