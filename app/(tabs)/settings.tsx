@@ -1,15 +1,18 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
+
 
 export default function SettingsScreen() {
+  const [reminderEnabled, setReminderEnabled] = useState(false);
   return (
     <ScrollView style = {styles.container}contentContainerStyle={styles.content}>
       <View style = {{gap:40}}>
         <View>
           <Text style = {styles.settingsText}>Settings</Text>
         </View>
-        <View style = {{gap:10}}>
+        <View style = {{gap:15}}>
           <View>
             <Text style = {{color:'#6B6B6B', fontSize: 12,}}>ACCOUNT</Text>
           </View>
@@ -31,11 +34,42 @@ export default function SettingsScreen() {
             <View style = {{ flexDirection: 'row',justifyContent: 'center', alignItems: 'center'}}>
               <View style = {{ flexDirection: 'column', gap: 3,  flex: 1}}>
                 <Text style = {styles.displayName}>LeetCode UserName</Text>
-                <Text style = {{color: "#9E9E9E"}}>subtitle</Text>
+                <Text style = {{color: "#9E9E9E"}}>Subtitle</Text>
               </View>
               <View style = {{flexDirection: 'row', justifyContent:'center', alignItems: 'center'}}>
                 <Text style = {{fontSize: 14, color: "#FF6B35",marginRight: 8}}>@olisaemeka</Text>
-                <AntDesign name="star" size={14} color="#333333" />
+                <AntDesign name="star" size={12} color="#9E9E9E" />
+              </View>
+            </View>
+          </View>
+          <View>
+            <Text style = {{color:'#6B6B6B', fontSize: 12,marginTop: 13,marginBottom: 0,}}>NOTIFICATIONS</Text>
+          </View>
+          <View style = {styles.accountCard} >
+            <View style = {{flexDirection: 'row', alignItems: 'center', gap: 10}}>
+              <View style = {{ flexDirection: 'column', gap: 3,  flex: 1}}>
+                <Text style = {styles.displayName}>Daily Reminder</Text>
+                <Text style = {{color: "#9E9E9E", fontSize: 12,}}>Get notified to keep your streak</Text>
+              </View>
+              <View style = {{flexDirection: 'row', alignItems: 'center', gap:7}}>
+                <AntDesign name="star" size={12} color="#9E9E9E"/>
+                <Switch
+                    value={reminderEnabled}
+                    onValueChange={setReminderEnabled}
+                    trackColor={{ false: '#333333', true: '#FF6B35' }}
+                    thumbColor="#FFFFFF"
+                />
+              </View> 
+            </View>
+            <View style = {{backgroundColor: "#333333", width: '100%', height:1, marginTop: 15, marginBottom: 15}}></View>
+            <View style = {{ flexDirection: 'row',justifyContent: 'center', alignItems: 'center'}}>
+              <View style = {{ flexDirection: 'column', gap: 3,  flex: 1}}>
+                <Text style = {styles.displayName}>Reminder Time</Text>
+                <Text style = {{color: "#9E9E9E"}}>Subtitle</Text>
+              </View>
+              <View style = {{flexDirection: 'row', justifyContent:'center', alignItems: 'center'}}>
+                <Text style = {{fontSize: 14, color: "#FF6B35",marginRight: 8}}>9:00PM</Text>
+                <AntDesign name="arrow-right" size={14} color="#FF6B35" />
               </View>
             </View>
           </View>
@@ -92,8 +126,6 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
   },
 
-  userName: {
-
-  }
+  
   
 });
