@@ -1,3 +1,4 @@
+import AntDesign from '@expo/vector-icons/AntDesign';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
@@ -19,10 +20,22 @@ export default function SettingsScreen() {
               </View>
               <View style = {{ flexDirection: 'column', gap: 3,  flex: 1}}>
                 <Text style = {styles.displayName}>Olisaemeka</Text>
-                <Text style = {{color: "#9E9E9E",}}>oliandchildren@gmail.com</Text>
+                <Text style = {{color: "#9E9E9E",}}>oliemeka@gmail.com</Text>
               </View>
               <View style = {{justifyContent: 'space-between', }}>
                 <MaterialIcons name="edit" size={20} color="#9E9E9E" />
+              </View>
+            </View>
+            <View style = {{backgroundColor: "#333333", width: '100%', height:1, marginTop: 15, marginBottom: 15}}>
+            </View>
+            <View style = {{ flexDirection: 'row',justifyContent: 'center', alignItems: 'center'}}>
+              <View style = {{ flexDirection: 'column', gap: 3,  flex: 1}}>
+                <Text style = {styles.displayName}>LeetCode UserName</Text>
+                <Text style = {{color: "#9E9E9E"}}>subtitle</Text>
+              </View>
+              <View style = {{flexDirection: 'row', justifyContent:'center', alignItems: 'center'}}>
+                <Text style = {{fontSize: 14, color: "#FF6B35",marginRight: 8}}>@olisaemeka</Text>
+                <AntDesign name="star" size={14} color="#333333" />
               </View>
             </View>
           </View>
@@ -52,12 +65,11 @@ const styles = StyleSheet.create({
 
   accountCard: {
     backgroundColor: '#1C1C1C',
-    height: 140,
     borderRadius: 10,
     borderColor: '#333333',
     borderWidth: 1,
     padding: 16,
-    paddingTop: 10,
+    paddingTop: 20,
     paddingLeft: 10,
     paddingRight: 10,
   },
@@ -76,7 +88,7 @@ const styles = StyleSheet.create({
   },
 
   displayName :{
-    fontSize: 15,
+    fontSize: 14,
     color: "#FFFFFF",
   },
 
