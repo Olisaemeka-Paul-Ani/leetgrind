@@ -1,10 +1,34 @@
-import { ScrollView, StyleSheet, Text } from 'react-native';
-
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 export default function SettingsScreen() {
   return (
     <ScrollView style = {styles.container}contentContainerStyle={styles.content}>
-      <Text style = {styles.settingsText}>Settings</Text>
+      <View style = {{gap:40}}>
+        <View>
+          <Text style = {styles.settingsText}>Settings</Text>
+        </View>
+        <View style = {{gap:10}}>
+          <View>
+            <Text style = {{color:'#6B6B6B', fontSize: 12,}}>ACCOUNT</Text>
+          </View>
+          <View style = {styles.accountCard} >
+            <View style = {{flexDirection: 'row', alignItems: 'center', gap: 10}}>
+              <View style = {styles.profilepic}>
+                <Text style={{color: "#FFFFFF"}}>OE</Text>
+              </View>
+              <View style = {{ flexDirection: 'column', gap: 3,  flex: 1}}>
+                <Text style = {styles.displayName}>Olisaemeka</Text>
+                <Text style = {{color: "#9E9E9E",}}>oliandchildren@gmail.com</Text>
+              </View>
+              <View style = {{justifyContent: 'space-between', }}>
+                <MaterialIcons name="edit" size={20} color="#9E9E9E" />
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      
     </ScrollView>
   );
 }
@@ -24,6 +48,40 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontSize: 24,
     lineHeight: 24,
+  },
+
+  accountCard: {
+    backgroundColor: '#1C1C1C',
+    height: 140,
+    borderRadius: 10,
+    borderColor: '#333333',
+    borderWidth: 1,
+    padding: 16,
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+
+  profilepic: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    borderWidth: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#333333',
+    borderColor: '#333333',
+    marginTop: 0,
+    marginLeft: 0,
+  },
+
+  displayName :{
+    fontSize: 15,
+    color: "#FFFFFF",
+  },
+
+  userName: {
+
   }
   
 });
