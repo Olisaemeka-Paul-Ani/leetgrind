@@ -106,7 +106,7 @@ export default function SettingsScreen() {
             </TouchableOpacity>
           </View>
           <View>
-            <Text style = {{color:'#6B6B6B', fontSize: 12,}}>ACCOUNT</Text>
+            <Text style = {{color:'#6B6B6B', fontSize: 12,}}>APP</Text>
           </View>
           <View style = {styles.accountCard} >
             <View style = {{ flexDirection: 'row',justifyContent: 'center', alignItems: 'center'}}>
@@ -139,9 +139,12 @@ export default function SettingsScreen() {
               </View>
             </View>
           </View>
-          <TouchableOpacity style ={{justifyContent: 'center',alignItems: 'center', marginTop: 20,}}>
-            <Text style = {{fontSize: 14, color: "#FF6B35"}}>Sign Out</Text>
+          <TouchableOpacity style ={{justifyContent: 'center',alignItems: 'center', marginTop: 20, marginBottom: 10}}>
+            <Text style = {{fontSize: 17, color: "#DC2626",}}>Sign Out</Text>
           </TouchableOpacity>
+          <View style = {{justifyContent: 'center',alignItems: 'center',}}>
+            <Text style = {{fontSize: 14, color: "#FFFFFF",}}>Version 1.4.2 (2104)</Text>
+          </View>
         </View>
       </View>
       
