@@ -1,4 +1,6 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
+import EvilIcons from '@expo/vector-icons/EvilIcons';
+import Fontisto from '@expo/vector-icons/Fontisto';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useState } from 'react';
@@ -102,6 +104,40 @@ export default function SettingsScreen() {
             <TouchableOpacity style = {{justifyContent: 'center',alignItems: 'center', marginBottom: 20,}}>
               <Text style = {{fontSize: 16, color: "#FFFFFF"}}>Manage Subscription</Text>
             </TouchableOpacity>
+          </View>
+          <View>
+            <Text style = {{color:'#6B6B6B', fontSize: 12,}}>ACCOUNT</Text>
+          </View>
+          <View style = {styles.accountCard} >
+            <View style = {{ flexDirection: 'row',justifyContent: 'center', alignItems: 'center'}}>
+              <View style = {{ flexDirection: 'column', gap: 3,  flex: 1}}>
+                <Text style = {styles.displayName}>Appearance</Text>
+                <Text style = {{color: "#9E9E9E"}}>Subtitle</Text>
+              </View>
+              <View style = {{flexDirection: 'row', justifyContent:'center', alignItems: 'center'}}>
+                <Text style = {{fontSize: 14, color: "#FF6B35",marginRight: 8}}>Dark Mode</Text>
+              </View>
+            </View>
+            <View style = {{backgroundColor: "#333333", width: '100%', height:1, marginTop: 15, marginBottom: 15}}></View>
+              <View style = {{ flexDirection: 'row',justifyContent: 'center', alignItems: 'center'}}>
+                <View style = {{ flexDirection: 'column', gap: 3,  flex: 1}}>
+                  <Text style = {styles.displayName}>Privacy Policy</Text>
+                  <Text style = {{color: "#9E9E9E"}}>Subtitle</Text>
+                </View>
+                <View style = {{flexDirection: 'row', justifyContent:'center', alignItems: 'center'}}>
+                  <EvilIcons name="external-link" size={24} color="#9E9E9E" />
+                </View>
+              </View>
+            <View style = {{backgroundColor: "#333333", width: '100%', height:1, marginTop: 15, marginBottom: 15}}></View>
+            <View style = {{ flexDirection: 'row',justifyContent: 'center', alignItems: 'center'}}>
+              <View style = {{ flexDirection: 'column', gap: 3,  flex: 1}}>
+                <Text style = {styles.displayName}>Help & Support</Text>
+                <Text style = {{color: "#9E9E9E"}}>Subtitle</Text>
+              </View>
+              <View style = {{flexDirection: 'row', justifyContent:'center', alignItems: 'center'}}>
+                <Fontisto name="email" size={19} color="#9E9E9E" />
+              </View>
+            </View>
           </View>
         </View>
       </View>
