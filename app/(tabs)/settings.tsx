@@ -1,7 +1,8 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useState } from 'react';
-import { ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
 
 
 export default function SettingsScreen() {
@@ -73,6 +74,35 @@ export default function SettingsScreen() {
               </View>
             </View>
           </View>
+          <View>
+            <Text style = {{color:'#6B6B6B', fontSize: 12,}}>PREMIUM</Text>
+          </View>
+          <View style = {styles.premiumCard} >
+            <View style = {{flexDirection: 'row', flex:1}}>
+              <View style = {{flex:1,}}>
+                <View style = {{flexDirection: 'row', alignItems: 'center', gap: 10}}>
+                  <View style = {{ flexDirection: 'column', gap: 3,}}>
+                    <Text style = {{fontSize: 22, color: "#FFFFFF"}}>LeetGrind Pro</Text>
+                  </View>
+                  <View style = {styles.question}>
+                    <Text style={{color: '#1C1C1C', fontSize: 10}}>?</Text>
+                  </View> 
+                </View>
+                <View style ={{marginTop: 5}}>
+                  <Text style = {{color: "#9E9E9E"}}>Level up your accountability</Text>
+                </View>
+              </View>
+              <View style ={styles.activeView}><Text style = {{color:"#FFFFFF", fontSize:10, fontWeight: 'bold',}}>ACTIVE</Text></View>
+            </View>
+            <View style = {{marginTop: 10, gap:5, marginBottom: 30,}}>
+              <View style ={{ flexDirection: 'row', gap: 3, alignItems: 'center',flex:1}}><Ionicons name="checkmark-circle-outline" size={18} color='#FF6B35' /><Text style = {styles.displayName}>Unlimited Study Groups</Text></View>
+              <View style ={{ flexDirection: 'row', gap: 3, alignItems: 'center',flex:1}}><Ionicons name="checkmark-circle-outline" size={18} color='#FF6B35' /><Text style = {styles.displayName}>Advanced Streak Analytics</Text></View>
+              <View style ={{ flexDirection: 'row', gap: 3, alignItems: 'center',flex:1}}><Ionicons name="checkmark-circle-outline" size={18} color='#FF6B35' /><Text style = {styles.displayName}>Custom Reminder Sounds</Text></View>
+            </View>
+            <TouchableOpacity style = {{justifyContent: 'center',alignItems: 'center', marginBottom: 20,}}>
+              <Text style = {{fontSize: 16, color: "#FFFFFF"}}>Manage Subscription</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
       
@@ -108,15 +138,35 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
 
+  premiumCard: {
+    backgroundColor: '#1C1C1C',
+    borderRadius: 10,
+    borderColor: "#FF6B35",
+    borderWidth: 1,
+    padding: 16,
+    paddingTop: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+
   profilepic: {
     width: 36,
     height: 36,
     borderRadius: 18,
-    borderWidth: 2,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#333333',
-    borderColor: '#333333',
+    marginTop: 0,
+    marginLeft: 0,
+  },
+
+  question: {
+    width: 13,
+    height: 13,
+    borderRadius: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: "#FF6B35",
     marginTop: 0,
     marginLeft: 0,
   },
@@ -125,6 +175,16 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#FFFFFF",
   },
+
+  activeView: {
+    backgroundColor: "#2A1A0E",
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingLeft: 10,
+    paddingRight: 10,
+    height: 30,
+    borderRadius:10,
+  }
 
   
   
