@@ -139,6 +139,9 @@ export default function SettingsScreen() {
               </View>
             </View>
           </View>
+          <TouchableOpacity style ={{justifyContent: 'center',alignItems: 'center', marginTop: 20,}}>
+            <Text style = {{fontSize: 14, color: "#FF6B35"}}>Sign Out</Text>
+          </TouchableOpacity>
         </View>
       </View>
       
