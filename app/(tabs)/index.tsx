@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 
@@ -32,7 +33,7 @@ export default function HomeScreen() {
       
 
       <View style={styles.streakCard}>
-        <Text style={styles.flameIcon}>🔥</Text>
+        <FontAwesome6 name="fire-flame-simple" size={32} color="#FF6B35"/>
         <Text style={styles.streakNumber}>47</Text>
         <Text style={styles.streakLabel}>day streak</Text>
       </View>
