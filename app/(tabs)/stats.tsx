@@ -6,7 +6,7 @@ export default function HomeScreen() {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <Text style = {styles.statsText}>Your Stats</Text>
-      <View style = {{ flexDirection: 'row',justifyContent: 'center', alignItems: 'flex-start', gap: 7,}}>
+      <View style = {{ flexDirection: 'row',justifyContent: 'center', gap: 7, alignItems: 'center' }}>
         <View style = {styles.streakCard} >
           <Text style = {{color: "#FFFFFF", textAlign: 'center', fontSize: 30}}>{userStats.streak} </Text>
           <Text style = {{color: "#9E9E9E", textAlign: 'center',fontSize: 10}}>Current Streak</Text>
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 16,
     paddingTop: 20,
-    paddingLeft: 10,
+    paddingLeft: 5,
     paddingRight: 10,
     flex: 1,
     justifyContent: 'center',
@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     flex:1,
-    height: 130,
     justifyContent: 'center',
     alignItems: 'center',
     gap: 5,
