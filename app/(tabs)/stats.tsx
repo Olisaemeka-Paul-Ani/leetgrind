@@ -2,6 +2,29 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 export default function HomeScreen() {
+  
+function yearGenerator(){
+   let startingDate = new Date()
+   startingDate.setDate(startingDate.getDate() - 364); // subtract 7 days
+    let i = 0
+    let j=0
+    let calendar = []
+    while (i<52){
+        let week = []
+        while (week.length != 7){
+            let randomValue =  Math.random() > 0.5;
+            let tempDate = new Date(startingDate)
+            tempDate.setDate(tempDate.getDate() + j)
+            week.push({date : tempDate.toDateString(), value: randomValue})
+            j=j+1
+    
+        }
+        calendar.push(week)
+        i=i+1
+    }
+    return calendar
+    }
+console.log(yearGenerator())
   const userStats = 
     {streak: 47, solved: 134, percentage: 2}
   return (
