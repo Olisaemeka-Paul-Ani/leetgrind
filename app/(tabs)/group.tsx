@@ -35,7 +35,7 @@ export default function GroupScreen() {
             <Text style={{color: "#FFFFFF"}}>{item.initials}</Text>
             {item.isOnline && <View style = {{position: 'absolute', bottom: -1, right: -1, width: 8, height: 8, borderRadius: 4,  backgroundColor: '#22C55E',}}></View>}
           </View>
-          <View style = {{flexDirection: 'column', flex:1}}>
+          <View style = {{flexDirection: 'column', flex:1,gap:8}}>
             <Text style = {{fontSize: 14, color: "#FFFFFF"}}>{item.name}</Text>
             <Text style = {{color: "#FF6B35"}}>🔥 {item.streak} day streak</Text>
           </View>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
 
   groupView: {
     backgroundColor: '#1C1C1C',
-    height: 60,
+    height: 70,
     borderRadius: 10,
     borderWidth: 1,
     padding: 16,

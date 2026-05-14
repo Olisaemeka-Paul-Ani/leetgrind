@@ -1,3 +1,4 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 export default function HomeScreen() {
@@ -5,7 +6,10 @@ export default function HomeScreen() {
     {streak: 47, solved: 134, percentage: 2}
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <Text style = {styles.statsText}>Your Stats</Text>
+      <View style = {{marginBottom:30,flexDirection: 'row'}}>
+        <Text style = {styles.statsText}>Your Stats</Text>
+        <Ionicons name="analytics-sharp" size={24} color="#9E9E9E" />
+      </View>
       <View style = {{ flexDirection: 'row',justifyContent: 'center', gap: 7, alignItems: 'center' }}>
         <View style = {styles.streakCard} >
           <Text style = {{color: "#FFFFFF", textAlign: 'center', fontSize: 30}}>{userStats.streak} </Text>
@@ -16,7 +20,7 @@ export default function HomeScreen() {
           <Text style = {{color: "#9E9E9E", textAlign: 'center',fontSize: 10}}>Total solved</Text>
         </View>
         <View style = {styles.rankApp} >
-          <Text style = {{color: "#FFFFFF", textAlign: 'center', fontSize: 30}}>Top {userStats.percentage}% </Text>
+          <Text style = {{color: "#FFFFFF", fontSize: 30}}>Top {userStats.percentage}% </Text>
           <Text style = {{color: "#9E9E9E", textAlign: 'center',fontSize: 10}}>Global Rank</Text>
         </View>
       </View>
@@ -69,6 +73,7 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontSize: 24,
     lineHeight: 24,
+    flex:1,
   },
 
 
