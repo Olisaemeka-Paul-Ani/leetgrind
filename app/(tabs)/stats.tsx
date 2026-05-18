@@ -60,7 +60,9 @@ export default function HomeScreen() {
           ))}
           </View>
         ))}
-      </ScrollView> 
+      </ScrollView>
+      <Text style = {{color:'#6B6B6B', fontSize: 12, marginBottom:10,marginTop:30,}}>WEAK SPOTS</Text>
+      <View style = {styles.weakSpotsCard}></View> 
     </ScrollView>
   );
 }
@@ -149,6 +151,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingLeft: 13,
     paddingRight: 13,
+  },
+
+  weakSpotsCard:{
+    backgroundColor: '#1C1C1C',
+    height: 180,
+    width: 290,
+    borderRadius: 10,
   }
 
 
