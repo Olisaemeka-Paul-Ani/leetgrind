@@ -1,8 +1,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
-export default function HomeScreen() {
-  
+
 function yearGenerator(){
    let startingDate = new Date()
    startingDate.setDate(startingDate.getDate() - 364); // subtract 7 days
@@ -24,7 +23,12 @@ function yearGenerator(){
     }
     return calendar
     }
-console.log(yearGenerator())
+
+  
+
+
+export default function HomeScreen() {
+  const calendar = yearGenerator()
   const userStats = 
     {streak: 47, solved: 134, percentage: 2}
   return (
@@ -47,6 +51,16 @@ console.log(yearGenerator())
           <Text style = {{color: "#9E9E9E", textAlign: 'center',fontSize: 10}}>Global Rank</Text>
         </View>
       </View>
+      <Text style = {{color:'#6B6B6B', fontSize: 12, marginBottom:10,marginTop:30,}}>ACTIVITY</Text>
+      <ScrollView horizontal = {true} style = {styles.heatMapContainer} contentContainerStyle = {styles.heatMapContentContainer}>
+        {calendar.map((item,index) => (
+          <View key = {index} style = {{gap:6, marginRight:6}}>
+          {item.map((day,index) => (
+            <View  key = {index}style = {[styles.hasSolved, day.value? styles.hasSolved: styles.hasNotSolved]}></View>
+          ))}
+          </View>
+        ))}
+      </ScrollView> 
     </ScrollView>
   );
 }
@@ -98,6 +112,44 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     flex:1,
   },
+
+  hasSolved :{
+    height: 10,
+    width: 10,
+    borderRadius: 2,
+    marginTop: 0,
+    marginBottom: 0,
+    marginLeft:0,
+    marginRight:0,
+    backgroundColor: '#22C55E',
+  },
+
+
+  hasNotSolved : {
+    height:10,
+    width:10,
+    borderRadius: 2,
+    marginTop: 0,
+    marginBottom: 0,
+    marginLeft:0,
+    marginRight:0,
+    backgroundColor: '#333333',
+
+
+  },
+
+  heatMapContainer:{
+    backgroundColor: '#1C1C1C',
+    height: 150,
+    borderRadius: 10,
+  },
+
+  heatMapContentContainer:{
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingLeft: 13,
+    paddingRight: 13,
+  }
 
 
 });
