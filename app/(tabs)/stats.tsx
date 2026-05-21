@@ -31,6 +31,13 @@ export default function HomeScreen() {
   const calendar = yearGenerator()
   const userStats = 
     {streak: 47, solved: 134, percentage: 2}
+  const weakSpots = 
+    [{topic: 'Dynamic Programming', percentage: 32},
+      {topic: 'Graphs', percentage: 45},
+      {topic: 'Trees', percentage: 58},
+      {topic: 'Linked Lists', percentage: 62},
+      {topic: 'Arrays & hashing', percentage: 88},
+    ]
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <View style = {{marginBottom:30,flexDirection: 'row'}}>
@@ -62,7 +69,22 @@ export default function HomeScreen() {
         ))}
       </ScrollView>
       <Text style = {{color:'#6B6B6B', fontSize: 12, marginBottom:10,marginTop:30,}}>WEAK SPOTS</Text>
-      <View style = {styles.weakSpotsCard}></View> 
+      <View style = {styles.weakSpotsCard}>
+        {weakSpots.map((item,index) => ( 
+        <View key = {index} style = {{gap:30}}>
+          <View style = {{gap:7}}>
+            <View style = {{flexDirection: 'row'}}>
+              <Text style = {{flex:1, fontSize: 14,color:'#FFFFFF'}}>{item.topic}</Text>
+              <Text style = {{color: "#9E9E9E",}}>{item.percentage}%</Text>
+            </View>
+            <View>
+              <View style = {{backgroundColor:'#0A0A0A', height:5, borderRadius:5, width: '100%'}}></View>
+              <View style = {{backgroundColor: "#FF6B35", height: 5, borderRadius:5,width: `${item.percentage}%`, position: 'absolute'}}></View>
+            </View>
+            </View>
+        </View>
+        ))}
+      </View> 
     </ScrollView>
   );
 }
@@ -154,10 +176,15 @@ const styles = StyleSheet.create({
   },
 
   weakSpotsCard:{
+    paddingTop:20,
+    paddingBottom: 20,
+    paddingLeft:15,
+    paddingRight:15,
     backgroundColor: '#1C1C1C',
-    height: 180,
-    width: 290,
+    width: '100%',
     borderRadius: 10,
+    gap:30,
+    flex:1,
   }
 
 
