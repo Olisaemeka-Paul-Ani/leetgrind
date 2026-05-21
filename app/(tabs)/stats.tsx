@@ -85,6 +85,8 @@ export default function HomeScreen() {
         </View>
         ))}
       </View> 
+      <Text style = {{color:'#6B6B6B', fontSize: 12, marginBottom:10,marginTop:30,}}>WEAK SPOTS</Text>
+      <View style = {styles.weakSpotsCard}></View>
     </ScrollView>
   );
 }
