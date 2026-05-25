@@ -11,6 +11,7 @@ export default function GroupScreen() {
     {initials: 'LM', name: 'LeetMaster', streak: 231, isOnline: true, doneToday: false},
     {initials: 'NO', name: 'NigthOwl', streak: 0, isOnline: true, doneToday: false},
   ]
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>

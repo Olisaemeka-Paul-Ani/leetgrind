@@ -38,6 +38,16 @@ export default function HomeScreen() {
       {topic: 'Linked Lists', percentage: 62},
       {topic: 'Arrays & hashing', percentage: 88},
     ]
+  const solvedPerData = [
+    {day: 'M', solved:2},
+    {day: 'T', solved:7},
+    {day: 'W', solved:1},
+    {day: 'T', solved:1},
+    {day: 'F', solved:0},
+    {day: 'S', solved:4},
+    {day: 'S', solved:12}
+
+  ]
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <View style = {{marginBottom:30,flexDirection: 'row'}}>
@@ -85,8 +95,19 @@ export default function HomeScreen() {
         </View>
         ))}
       </View> 
-      <Text style = {{color:'#6B6B6B', fontSize: 12, marginBottom:10,marginTop:30,}}>WEAK SPOTS</Text>
-      <View style = {styles.weakSpotsCard}></View>
+      <Text style = {{color:'#6B6B6B', fontSize: 12, marginBottom:10,marginTop:30,}}>SOLVED PER DAY</Text>
+      <View style = {styles.weakSpotsCard}>
+        <View style = {{justifyContent: 'space-evenly',flexDirection: 'row'}}>
+          {solvedPerData.map((item,index) => ( 
+            <View key = {index} style = {{justifyContent: 'flex-end',gap:10}}>
+              <View style = {{gap:0,flex:1,justifyContent:'flex-end'}}>
+                <View style = {{width:12, height: item.solved*10, backgroundColor: "#FF6B35",borderRadius:2,}}></View>
+                <Text style = {{fontSize:11, lineHeight:12,color: "#9E9E9E",}}>{item.day}</Text>
+              </View>
+            </View>
+          ))}
+        </View>
+      </View>
     </ScrollView>
   );
 }
