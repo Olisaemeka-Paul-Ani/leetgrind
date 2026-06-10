@@ -28,6 +28,11 @@ export default function signInScreen (){
               <Text style = {{color: "#FFFFFF"}}>Continue with Apple</Text>
           </TouchableOpacity>
         </View>
+        <View style = {{flexDirection:'row',width: '100%',justifyContent: 'center',alignItems: 'center', marginTop: 20, gap:5}}>
+          <View style = {{backgroundColor: "#333333", flex:1, height:1, marginTop: 15, marginBottom: 15}}></View>
+          <Text style = {{color:"#333333" }}>or</Text>
+          <View style = {{backgroundColor: "#333333", flex: 1, height:1, marginTop: 15, marginBottom: 15}}></View>
+        </View>
       </View> 
     </ScrollView>
   );
