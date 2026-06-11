@@ -1,9 +1,39 @@
-
 import AntDesign from '@expo/vector-icons/AntDesign';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import * as Linking from 'expo-linking';
+import * as WebBrowser from 'expo-web-browser';
 import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { supabase } from '../lib/supabase';
 
 export default function signInScreen (){
+  async function signInWithGitHub() {
+  const redirectUrl = Linking.createURL('/auth/callback')
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'github',
+    options: {
+      redirectTo: redirectUrl,
+      skipBrowserRedirect: true,
+    },
+  })
+
+  if (data?.url) {
+    const result = await WebBrowser.openAuthSessionAsync(data.url, redirectUrl)
+    console.log('auth result:', result)
+
+    if (result.type === 'success' && result.url) {
+      const params = new URLSearchParams(result.url.split('#')[1])
+      const access_token = params.get('access_token')
+      const refresh_token = params.get('refresh_token')
+
+      if (access_token && refresh_token) {
+        const { error } = await supabase.auth.setSession({ access_token, refresh_token })
+        if (!error) {
+          console.log('signed in!')
+        }
+      }
+    }
+  }
+}
   return (
     <KeyboardAvoidingView  behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{ flex: 1 }}
 >
@@ -21,7 +51,7 @@ export default function signInScreen (){
                 <AntDesign name="google" size={20} color="#FFFFFF"  />
                 <Text style = {{color: "#FFFFFF"}}>Continue with Google</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.completeButton}>
+            <TouchableOpacity onPress={signInWithGitHub}  style={styles.completeButton}>
                 <AntDesign name="github" size={20} color="#FFFFFF" />
                 <Text style = {{color: "#FFFFFF"}}>Continue with GitHub</Text>
             </TouchableOpacity>
