@@ -5,10 +5,14 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useState } from 'react';
 import { ScrollView, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
+import { supabase } from '../../lib/supabase';
 
 
 export default function SettingsScreen() {
   const [reminderEnabled, setReminderEnabled] = useState(false);
+  async function signOut() {
+    await supabase.auth.signOut()
+    }
   return (
     <ScrollView style = {styles.container}contentContainerStyle={styles.content}>
       <View style = {{gap:40}}>
@@ -140,7 +144,7 @@ export default function SettingsScreen() {
             </View>
           </View>
           <TouchableOpacity style ={{justifyContent: 'center',alignItems: 'center', marginTop: 20, marginBottom: 10}}>
-            <Text style = {{fontSize: 17, color: "#DC2626",}}>Sign Out</Text>
+            <Text style = {{fontSize: 17, color: "#DC2626",}} onPress={signOut}>Sign Out</Text>
           </TouchableOpacity>
           <View style = {{justifyContent: 'center',alignItems: 'center',}}>
             <Text style = {{fontSize: 14, color: "#FFFFFF",}}>Version 1.4.2 (2104)</Text>

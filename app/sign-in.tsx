@@ -5,35 +5,45 @@ import * as WebBrowser from 'expo-web-browser';
 import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { supabase } from '../lib/supabase';
 
-export default function signInScreen (){
+export default function signInScreen() {
   async function signInWithGitHub() {
-  const redirectUrl = Linking.createURL('/auth/callback')
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'github',
-    options: {
-      redirectTo: redirectUrl,
-      skipBrowserRedirect: true,
-    },
-  })
-
-  if (data?.url) {
-    const result = await WebBrowser.openAuthSessionAsync(data.url, redirectUrl)
-    console.log('auth result:', result)
-
-    if (result.type === 'success' && result.url) {
-      const params = new URLSearchParams(result.url.split('#')[1])
-      const access_token = params.get('access_token')
-      const refresh_token = params.get('refresh_token')
-
-      if (access_token && refresh_token) {
-        const { error } = await supabase.auth.setSession({ access_token, refresh_token })
-        if (!error) {
-          console.log('signed in!')
+    const redirectUrl = Linking.createURL('/auth/callback')
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'github',
+      options: { redirectTo: redirectUrl, skipBrowserRedirect: true },
+    })
+    if (data?.url) {
+      const result = await WebBrowser.openAuthSessionAsync(data.url, redirectUrl)
+      if (result.type === 'success' && result.url) {
+        const params = new URLSearchParams(result.url.split('#')[1])
+        const access_token = params.get('access_token')
+        const refresh_token = params.get('refresh_token')
+        if (access_token && refresh_token) {
+          await supabase.auth.setSession({ access_token, refresh_token })
         }
       }
     }
   }
-}
+
+  async function signInWithGoogle() {
+    const redirectUrl = Linking.createURL('/auth/callback')
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: redirectUrl, skipBrowserRedirect: true },
+    })
+    if (data?.url) {
+      const result = await WebBrowser.openAuthSessionAsync(data.url, redirectUrl)
+      if (result.type === 'success' && result.url) {
+        const params = new URLSearchParams(result.url.split('#')[1])
+        const access_token = params.get('access_token')
+        const refresh_token = params.get('refresh_token')
+        if (access_token && refresh_token) {
+          await supabase.auth.setSession({ access_token, refresh_token })
+        }
+      }
+    }
+  }
+
   return (
     <KeyboardAvoidingView  behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{ flex: 1 }}
 >
@@ -47,7 +57,7 @@ export default function signInScreen (){
             <Text  style = {{color:'#6B6B6B', fontSize: 12,}}>Pick up where your streak left off</Text>
           </View>
           <View style = {{gap:10, marginTop: 40}}>
-            <TouchableOpacity style={styles.completeButton}>
+            <TouchableOpacity onPress={signInWithGoogle} style={styles.completeButton}>
                 <AntDesign name="google" size={20} color="#FFFFFF"  />
                 <Text style = {{color: "#FFFFFF"}}>Continue with Google</Text>
             </TouchableOpacity>
