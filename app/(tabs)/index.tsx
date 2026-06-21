@@ -1,9 +1,35 @@
 import { Ionicons } from '@expo/vector-icons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { supabase } from '../../lib/supabase';
 
 
 export default function HomeScreen() {
+  const [solvedToday, setSolvedToday] = useState(false)
+
+    useEffect(() => {
+      async function checkTodaySolve() {
+        const { data: { user } } = await supabase.auth.getUser()
+        if (!user) return
+
+        const today = new Date().toISOString().split('T')[0]
+
+        const { data, error } = await supabase
+          .from('solves')
+          .select('*')
+          .eq('user_id', user.id)
+          .eq('solved_when', today)
+
+        if (data && data.length > 0) {
+          setSolvedToday(true)
+        }
+      }
+
+      checkTodaySolve()
+    }, [])
+
+    
   const weekData = [
     { day: 'M', isComplete: true },
     { day: 'T', isComplete: true },
